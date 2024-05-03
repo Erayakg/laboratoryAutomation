@@ -20,5 +20,7 @@ public interface PatientService {
 
     List<PatientResDTO> getAllPatient();
 
+    Patient getPatientByid(Long id);
+
 
 }
