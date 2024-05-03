@@ -1,14 +1,13 @@
 package com.example.demo.services.impl;
 
-import com.example.demo.dao.PatientRepository;
-import com.example.demo.dto.PatientReqDTO;
-import com.example.demo.dto.PatientResDTO;
+import com.example.demo.repository.PatientRepository;
+import com.example.demo.dto.request.PatientReqDTO;
+import com.example.demo.dto.response.PatientResDTO;
 import com.example.demo.entity.Patient;
 import com.example.demo.services.PatientService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service

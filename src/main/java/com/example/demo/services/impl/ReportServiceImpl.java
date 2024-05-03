@@ -1,7 +1,12 @@
 package com.example.demo.services.impl;
 
-import com.example.demo.dao.ReportRepository;
-import com.example.demo.dto.*;
+import com.example.demo.dto.request.ReportReqDTO;
+import com.example.demo.dto.response.LaboratoryWorkerResDTO;
+import com.example.demo.dto.response.PatientResDTO;
+import com.example.demo.dto.response.ReportResDTO;
+import com.example.demo.dto.response.ReportResIdDTO;
+import com.example.demo.exceptions.ReportNotFoundException;
+import com.example.demo.repository.ReportRepository;
 import com.example.demo.entity.LaboratoryWorker;
 import com.example.demo.entity.Patient;
 import com.example.demo.entity.Report;
@@ -36,13 +41,23 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public void deletePatient(Long id) {
-
+    public void deleteReport(Long id) {
+        reportRepository.deleteById(id);
     }
 
     @Override
-    public Report updatePatient(Long id) {
-        return null;
+    public ReportResIdDTO updateReport(Long id, ReportReqDTO reportReqDTO) {
+        Report report=reportRepository.findById(id).orElseThrow(()->
+                new ReportNotFoundException("Report not found id:"+id));
+        report.setDiagnosisTitle(reportReqDTO.getDiagnosisTitle());
+        report.setDiagnosisDetails(reportReqDTO.getDiagnosisDetails());
+
+        Report saveReport=reportRepository.save(report);
+        ReportResIdDTO reportResDTO=mapToDto(saveReport);
+
+
+
+        return reportResDTO;
     }
 
     @Override
@@ -56,20 +71,34 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public List<ReportResIdDTO> getReportListByLaboratoryWorkerId(Long laboratoryWorkerId) {
+    public List<ReportResDTO> getReportListByLaboratoryWorkerId(Long laboratoryWorkerId) {
         List<Report> reportList=reportRepository.findByLaboratoryWorkerId(laboratoryWorkerId);
-        List<ReportResIdDTO>  reportResIdDTOS=mapToDtoList(reportList);
+        List<ReportResDTO>  reportResDTOS=mapToDtoList(reportList);
 
-        return reportResIdDTOS;
+        return reportResDTOS;
     }
 
     @Override
-    public List<ReportResIdDTO> getReportListByPatientId(Long patientId) {
+    public List<ReportResDTO> getReportListByPatientId(Long patientId) {
 
         List<Report> reportList=reportRepository.findByPatientId(patientId);
-        List<ReportResIdDTO>  reportResIdDTOS=mapToDtoList(reportList);
+        List<ReportResDTO>  reportResDTOS=mapToDtoList(reportList);
 
-        return reportResIdDTOS;
+        return reportResDTOS;
+    }
+
+    @Override
+    public List<ReportResDTO> getReportListByLaboratoryWorkerName(String name) {
+        List<Report> reportList=reportRepository.findByLaboratoryWorkerName(name);
+        List<ReportResDTO> reportResDTOList=mapToDtoList(reportList);
+        return reportResDTOList;
+    }
+
+    @Override
+    public List<ReportResDTO> getReportListByPatientName(String name) {
+        List<Report> reportList=reportRepository.findByPatientName(name);
+        List<ReportResDTO> reportResDTOList=mapToDtoList(reportList);
+        return reportResDTOList;
     }
 
 
@@ -84,13 +113,15 @@ public class ReportServiceImpl implements ReportService {
         return dto;
     }
 
-    public static List<ReportResIdDTO> mapToDtoList(List<Report> reports) {
+    public static List<ReportResDTO> mapToDtoList(List<Report> reports) {
         return reports.stream().map(report -> {
-            ReportResIdDTO dto = new ReportResIdDTO();
+            ReportResDTO dto = new ReportResDTO();
             dto.setDiagnosisDetails(report.getDiagnosisDetails());
             dto.setIssueDate(report.getIssueDate());
-            dto.setPatientId(report.getPatient().getId());
-            dto.setLaboratoryWorkerId(report.getLaboratoryWorker().getId());
+            PatientResDTO patientResDTO=patientService.getPatientById(report.getPatient().getId());
+            LaboratoryWorkerResDTO laboratoryWorkerResDTO=laboratoryWorkerService.getLaboratoryWorkerById(report.getLaboratoryWorker().getId());
+            dto.setPatientResDTO(patientResDTO);
+            dto.setLaboratoryWorkerResDTO(laboratoryWorkerResDTO);
             dto.setPhotoUrl(report.getPhotoUrl());
             dto.setDiagnosisTitle(report.getDiagnosisTitle());
             return dto;

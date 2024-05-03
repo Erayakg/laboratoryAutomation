@@ -1,16 +1,17 @@
-package com.example.demo.dto;
+package com.example.demo.dto.request;
 
 import jakarta.persistence.Column;
 import lombok.Data;
 
 @Data
-public class LaboratoryWorkerResDTO {
+public class LaboratoryWorkerReqDTO {
+
 
     private String name;
-
     private String Surname;
-
     private String mail;
+    private  String password;
     private String LaboratoryWorkerNumber;
+
 
 }

@@ -44,6 +44,11 @@ public class GeneralExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<String> handleProductNotFoundException(PatientNotFoundException exception){
         return new ResponseEntity<>(exception.getMessage(), NOT_FOUND);
     }
+    @ExceptionHandler(LaboratoryWorkerBotFoundException.class)
+    public ResponseEntity<String> handleProductNotFoundException(LaboratoryWorkerBotFoundException exception){
+        return new ResponseEntity<>(exception.getMessage(), NOT_FOUND);
+    }
+
 
 
 }

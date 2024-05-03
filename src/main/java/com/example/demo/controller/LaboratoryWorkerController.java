@@ -1,9 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.LaboratoryWorkerReqDTO;
-import com.example.demo.dto.LaboratoryWorkerResDTO;
-import com.example.demo.dto.PatientReqDTO;
-import com.example.demo.dto.PatientResDTO;
+import com.example.demo.dto.request.LaboratoryWorkerReqDTO;
+import com.example.demo.dto.response.LaboratoryWorkerResDTO;
 import com.example.demo.services.LaboratoryWorkerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +17,11 @@ public class LaboratoryWorkerController {
 
     public LaboratoryWorkerController(LaboratoryWorkerService laboratoryWorkerService) {
         this.laboratoryWorkerService = laboratoryWorkerService;
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<LaboratoryWorkerResDTO> getLaboratoryWorkerByName(@RequestParam String name){
+        return new ResponseEntity<>(laboratoryWorkerService.getLaboratoryWorkerByName(name),HttpStatus.OK);
     }
 
 
@@ -39,6 +42,13 @@ public class LaboratoryWorkerController {
     @PutMapping("/update/{id}")
     public ResponseEntity<LaboratoryWorkerResDTO> updatePatientById(@PathVariable Long id,@RequestBody  LaboratoryWorkerReqDTO laboratoryWorkerReqDTO){
         return new ResponseEntity<>(laboratoryWorkerService.updateLaboratoryWorker(id,laboratoryWorkerReqDTO),HttpStatus.OK);
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable Long id){
+        laboratoryWorkerService.deleteLaboratoryWorker(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+
     }
 
 }
