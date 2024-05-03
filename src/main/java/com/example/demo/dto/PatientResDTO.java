@@ -7,5 +7,7 @@ public class PatientResDTO {
 
     private String name;
     private String surName;
+    private String mail;
+
 
 }
