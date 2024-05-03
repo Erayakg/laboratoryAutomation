@@ -18,7 +18,6 @@ public class Report {
     private Patient patient;
 
     private String tanıBasligi;
-
     private String tanıDetayları;
     private LocalDate verilmeTarihi;
     private String fotoUrl;
