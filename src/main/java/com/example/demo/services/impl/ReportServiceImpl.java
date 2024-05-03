@@ -11,7 +11,6 @@ import com.example.demo.services.ReportService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -57,18 +56,20 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public List<ReportResDTO> getReportListByLaboratoryWorkerId(Long laboratoryWorkerId) {
-        Optional<Report> reportList=reportRepository.findByLaboratoryWorkerId(laboratoryWorkerId);
-        //mapleme yapılacak
-        return null;
+    public List<ReportResIdDTO> getReportListByLaboratoryWorkerId(Long laboratoryWorkerId) {
+        List<Report> reportList=reportRepository.findByLaboratoryWorkerId(laboratoryWorkerId);
+        List<ReportResIdDTO>  reportResIdDTOS=mapToDtoList(reportList);
+
+        return reportResIdDTOS;
     }
 
     @Override
-    public List<ReportResDTO> getReportListByPatientId(Long patientId) {
+    public List<ReportResIdDTO> getReportListByPatientId(Long patientId) {
 
-        Optional<Report> reportList=reportRepository.findByPatientId(patientId);
-        //mapleme yapılacak
-        return null;
+        List<Report> reportList=reportRepository.findByPatientId(patientId);
+        List<ReportResIdDTO>  reportResIdDTOS=mapToDtoList(reportList);
+
+        return reportResIdDTOS;
     }
 
 
