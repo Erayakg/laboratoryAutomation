@@ -20,5 +20,6 @@ public class Report {
     private String tanıBasligi;
     private String tanıDetayları;
     private LocalDate verilmeTarihi;
+
     private String fotoUrl;
 }
