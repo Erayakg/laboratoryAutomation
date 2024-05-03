@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.ReportReqDTO;
 import com.example.demo.dto.ReportResDTO;
+import com.example.demo.dto.ReportResIdDTO;
 import com.example.demo.entity.Report;
 import com.example.demo.services.ReportService;
 import org.springframework.http.HttpStatus;
@@ -36,7 +37,7 @@ public class ReportController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<ReportResDTO> saveReport(@RequestBody ReportReqDTO reportReqDTO){
+    public ResponseEntity<ReportResIdDTO> saveReport(@RequestBody ReportReqDTO reportReqDTO){
         return new ResponseEntity<>(reportService.saveReport(reportReqDTO),HttpStatus.CREATED);
     }
 

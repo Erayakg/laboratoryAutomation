@@ -29,9 +29,11 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public ReportResDTO saveReport(ReportReqDTO reportReqDTO) {
-
-        return null;
+    public ReportResIdDTO saveReport(ReportReqDTO reportReqDTO) {
+        Report report=mapToDto(reportReqDTO);
+        Report saveReport=reportRepository.save(report);
+        ReportResIdDTO reportResIdDTO=mapToDto(saveReport);
+        return reportResIdDTO;
     }
 
     @Override
