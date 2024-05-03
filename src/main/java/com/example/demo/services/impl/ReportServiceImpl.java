@@ -62,12 +62,14 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public Report getbyid(Long id) {
-        return null;
+        return reportRepository.findById(id).orElseThrow(()->new ReportNotFoundException("Report not found"));
     }
 
     @Override
-    public List<Report> reportList() {
-        return null;
+    public List<ReportResDTO> reportList() {
+        List<Report> reportList=reportRepository.findAll();
+        List<ReportResDTO>  reportResIdDTOS=mapToDtoList(reportList);
+        return reportResIdDTOS;
     }
 
     @Override

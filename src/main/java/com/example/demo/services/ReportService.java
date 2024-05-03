@@ -19,7 +19,7 @@ public interface ReportService {
 
     Report getbyid(Long id);
 
-    List<Report> reportList();
+    List<ReportResDTO> reportList();
     List<ReportResDTO> getReportListByLaboratoryWorkerId(Long laboratoryWorkerId);
 
 
