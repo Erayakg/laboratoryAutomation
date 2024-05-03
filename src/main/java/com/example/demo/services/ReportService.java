@@ -2,21 +2,23 @@ package com.example.demo.services;
 
 import com.example.demo.entity.Patient;
 import com.example.demo.entity.Report;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public interface ReportService {
 
-    Optional<Report> saveReport(Patient patient);
+    Report saveReport(Patient patient);
 
     void deletePatient(Long id);
 
-    Optional<Patient> updatePatient(Long id);
+    Report updatePatient(Long id);
 
-    Optional<Patient> getbyid(Long id);
+    Report getbyid(Long id);
 
-    Optional<List<Patient>> patientList();
+    List<Report> reportList();
+    List<Report> reportListByLaboratoryWorkerId(Long laboratoryWorkerId);
 
 
 }
