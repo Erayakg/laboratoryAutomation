@@ -1,8 +1,6 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +9,9 @@ import java.time.LocalDateTime;
 @Setter
 @Embeddable
 public class BaseAdditionalsFields {
-
+    @Id
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    private Long id;
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
     private Long createdBy;
