@@ -1,14 +1,13 @@
-package com.example.demo.dto;
+package com.example.demo.dto.request;
+
 
 import lombok.Data;
 
-import java.time.LocalDate;
 @Data
-public class ReportResIdDTO {
+public class ReportReqDTO {
     private Long laboratoryWorkerId;
     private Long patientId;
     private String diagnosisTitle;
     private String diagnosisDetails;
-    private LocalDate issueDate;
-    private String photoUrl;
+
 }

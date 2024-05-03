@@ -1,8 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.PatientReqDTO;
-import com.example.demo.dto.PatientResDTO;
-import com.example.demo.entity.Patient;
+import com.example.demo.dto.request.PatientReqDTO;
+import com.example.demo.dto.response.PatientResDTO;
 import com.example.demo.services.PatientService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,6 +36,12 @@ public class PatientController {
     @PutMapping("/update/{id}")
     public ResponseEntity<PatientResDTO> updatePatientById(@PathVariable Long id,@RequestBody PatientReqDTO patientReqDTO){
         return new ResponseEntity<>(patientService.updatePatient(id,patientReqDTO),HttpStatus.OK);
+    }
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable Long id){
+        patientService.deletePatient(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+
     }
 
 }

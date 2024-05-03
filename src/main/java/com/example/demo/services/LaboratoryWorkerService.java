@@ -1,9 +1,7 @@
 package com.example.demo.services;
 
-import com.example.demo.dto.LaboratoryWorkerReqDTO;
-import com.example.demo.dto.LaboratoryWorkerResDTO;
-import com.example.demo.dto.PatientReqDTO;
-import com.example.demo.dto.PatientResDTO;
+import com.example.demo.dto.request.LaboratoryWorkerReqDTO;
+import com.example.demo.dto.response.LaboratoryWorkerResDTO;
 import com.example.demo.entity.LaboratoryWorker;
 import org.springframework.stereotype.Service;
 
@@ -23,4 +21,5 @@ public interface LaboratoryWorkerService {
 
     LaboratoryWorker getLaboratoryWorkerByid(Long id);
 
+    LaboratoryWorkerResDTO getLaboratoryWorkerByName(String name);
 }

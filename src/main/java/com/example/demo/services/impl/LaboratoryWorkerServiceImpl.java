@@ -1,16 +1,13 @@
 package com.example.demo.services.impl;
 
-import com.example.demo.dao.LaboratoryWorkerRepository;
-import com.example.demo.dto.LaboratoryWorkerReqDTO;
-import com.example.demo.dto.LaboratoryWorkerResDTO;
-import com.example.demo.dto.PatientResDTO;
+import com.example.demo.repository.LaboratoryWorkerRepository;
+import com.example.demo.dto.request.LaboratoryWorkerReqDTO;
+import com.example.demo.dto.response.LaboratoryWorkerResDTO;
 import com.example.demo.entity.LaboratoryWorker;
-import com.example.demo.entity.Patient;
 import com.example.demo.services.LaboratoryWorkerService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -84,6 +81,13 @@ public class LaboratoryWorkerServiceImpl implements LaboratoryWorkerService {
     @Override
     public LaboratoryWorker getLaboratoryWorkerByid(Long id) {
         return laboratoryWorkerRepository.getReferenceById(id);
+    }
+
+    @Override
+    public LaboratoryWorkerResDTO getLaboratoryWorkerByName(String name) {
+        LaboratoryWorker worker=laboratoryWorkerRepository.findByNameContainingIgnoreCase(name);
+        LaboratoryWorkerResDTO laboratoryWorkerResDTO=mapToResDTO(worker);
+        return laboratoryWorkerResDTO;
     }
 
     public LaboratoryWorkerResDTO mapToResDTO(LaboratoryWorker worker) {
