@@ -9,8 +9,8 @@ import lombok.Data;
 public class LaboratoryWorker extends BaseEntity{
     @Id
     @Column(name = "worker_id")
-    private Long id;
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String name;
     private String Surname;
