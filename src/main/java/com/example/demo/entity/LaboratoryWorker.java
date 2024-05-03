@@ -5,7 +5,6 @@ import lombok.Data;
 
 @Entity
 @Data
-
 public class LaboratoryWorker extends BaseEntity{
     @Id
     @Column(name = "worker_id")
