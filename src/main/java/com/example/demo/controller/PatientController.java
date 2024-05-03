@@ -25,8 +25,8 @@ public class PatientController {
         return new ResponseEntity<>(patientService.getAllPatient(), HttpStatus.OK);
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Patient> getPatientById(@PathVariable Long id){
-        return new ResponseEntity<>(patientService.getPatientById(id));
+    public ResponseEntity<PatientResDTO> getPatientById(@PathVariable Long id){
+        return new ResponseEntity<>(patientService.getPatientById(id),HttpStatus.FOUND);
     }
 
     @PostMapping("/save")
@@ -35,8 +35,8 @@ public class PatientController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<PatientResDTO> updatePatientById(@PathVariable Long id){
-        return new ResponseEntity<>(patientService.updatePatientById,HttpStatus.OK);
+    public ResponseEntity<PatientResDTO> updatePatientById(@PathVariable Long id,@RequestBody PatientReqDTO patientReqDTO){
+        return new ResponseEntity<>(patientService.updatePatient(id,patientReqDTO),HttpStatus.OK);
     }
 
 }

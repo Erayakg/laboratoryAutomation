@@ -35,17 +35,35 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public void deletePatient(Long id) {
 
+        Patient getByid = patientRepository.getReferenceById(id);
+
+        patientRepository.delete(getByid);
+
     }
 
     @Override
-    public Optional<PatientResDTO> updatePatient(Long id) {
-        return Optional.empty();
+    public PatientResDTO updatePatient(Long id,PatientReqDTO updatePatient) {
+        Patient getByid = patientRepository.getReferenceById(id);
+        getByid.setMail(updatePatient.getMail());
+        getByid.setPatientNumber(updatePatient.getPatientNumber());
+        getByid.setPassword(updatePatient.getPassword());
+        getByid.setName(updatePatient.getName());
+        getByid.setSurName(updatePatient.getSurName());
+
+        Patient save = patientRepository.save(getByid);
+
+        PatientResDTO patientResDTO = mapToDto(save);
+
+        return patientResDTO;
     }
 
     @Override
-    public Optional<PatientResDTO> getPatientById(Long id) {
+    public PatientResDTO getPatientById(Long id) {
 
-        return Optional.empty();
+        Patient getByidPatient = patientRepository.getReferenceById(id);
+        PatientResDTO patientResDTO = mapToDto(getByidPatient);
+
+        return patientResDTO;
     }
 
     @Override

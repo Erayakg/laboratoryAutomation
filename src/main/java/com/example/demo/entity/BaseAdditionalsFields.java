@@ -9,9 +9,7 @@ import java.time.LocalDateTime;
 @Setter
 @Embeddable
 public class BaseAdditionalsFields {
-    @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    private Long id;
+
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
 

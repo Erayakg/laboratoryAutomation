@@ -14,9 +14,9 @@ public interface PatientService {
 
     void deletePatient(Long id);
 
-    Optional<PatientResDTO> updatePatient(Long id);
+    PatientResDTO updatePatient(Long id,PatientReqDTO patientReqDTO);
 
-    Optional<PatientResDTO> getPatientById(Long id);
+    PatientResDTO getPatientById(Long id);
 
     List<PatientResDTO> getAllPatient();
 
