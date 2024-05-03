@@ -4,6 +4,7 @@ import com.example.demo.dto.LaboratoryWorkerReqDTO;
 import com.example.demo.dto.LaboratoryWorkerResDTO;
 import com.example.demo.dto.PatientReqDTO;
 import com.example.demo.dto.PatientResDTO;
+import com.example.demo.entity.LaboratoryWorker;
 
 import java.util.List;
 
@@ -18,4 +19,7 @@ public interface LaboratoryWorkerService {
     LaboratoryWorkerResDTO getLaboratoryWorkerById(Long id);
 
     List<LaboratoryWorkerResDTO> getAllLaboratory();
+
+    LaboratoryWorker getLaboratoryWorkerByid(Long id);
+
 }

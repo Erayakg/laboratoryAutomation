@@ -73,6 +73,11 @@ public class PatientServiceImpl implements PatientService {
         return patientResDTOS;
     }
 
+    @Override
+    public Patient getPatientByid(Long id) {
+        return patientRepository.getReferenceById(id);
+    }
+
     public static PatientResDTO mapToDto(Patient patient) {
         PatientResDTO dto = new PatientResDTO();
         dto.setName(patient.getName());

@@ -81,6 +81,11 @@ public class LaboratoryWorkerServiceImpl implements LaboratoryWorkerService {
         return laboratoryWorkerResDTOS;
     }
 
+    @Override
+    public LaboratoryWorker getLaboratoryWorkerByid(Long id) {
+        return laboratoryWorkerRepository.getReferenceById(id);
+    }
+
     public LaboratoryWorkerResDTO mapToResDTO(LaboratoryWorker worker) {
         LaboratoryWorkerResDTO resDTO = new LaboratoryWorkerResDTO();
         resDTO.setName(worker.getName());
