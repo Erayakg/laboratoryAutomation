@@ -30,7 +30,12 @@ public class PatientController {
 
     @PostMapping("/save")
     public ResponseEntity<PatientResDTO> savePatient(@RequestBody PatientReqDTO patientReqDTO){
-        return ResponseEntity<>(patientService.savePatient(patientReqDTO),)
+        return ResponseEntity<>(patientService.savePatient(patientReqDTO),HttpStatus.CREATED);
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<PatientResDTO> updatePatientById(@PathVariable Long id){
+        return new ResponseEntity<>(patientService.updatePatientById,HttpStatus.OK);
     }
 
 }
