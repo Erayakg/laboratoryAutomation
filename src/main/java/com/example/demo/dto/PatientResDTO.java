@@ -3,10 +3,9 @@ package com.example.demo.dto;
 import lombok.Data;
 
 @Data
-public class HumanReqDTO {
+public class PatientResDTO {
 
     private String name;
     private String surName;
-    private String PersonalNumber;
 
 }
