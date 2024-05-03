@@ -26,6 +26,12 @@ Burada tüm API'leri test edebilirsiniz.
 
 Bu API, laboratuvarlar, hastalar ve raporlar üzerinde işlemler gerçekleştirmek için kullanılır.
 
+## Kullanılan Teknolojiler
+- Java 17
+- H2 Database
+- Docker
+
+
 ## Laboratory( Laboratuvar)
 
 - `GET /api/v1/laboratory/{id}`: Belirli bir laboratuvarın bilgilerini almak için kullanılır.
