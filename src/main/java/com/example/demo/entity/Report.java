@@ -18,8 +18,7 @@ public class Report extends BaseEntity{
     @JoinColumn(name = "patient_id")
     private Patient patient;
 
-    private String mail;
-    private  String password;
+
     private String diagnosisTitle;
     private String diagnosisDetails;
     private LocalDate issueDate;

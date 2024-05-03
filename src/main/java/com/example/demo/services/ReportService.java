@@ -1,5 +1,7 @@
 package com.example.demo.services;
 
+import com.example.demo.dto.ReportReqDTO;
+import com.example.demo.dto.ReportResDTO;
 import com.example.demo.entity.Patient;
 import com.example.demo.entity.Report;
 import org.springframework.stereotype.Service;
@@ -9,7 +11,7 @@ import java.util.Optional;
 @Service
 public interface ReportService {
 
-    Report saveReport(Patient patient);
+    ReportResDTO saveReport(ReportReqDTO reportReqDTO);
 
     void deletePatient(Long id);
 
@@ -18,7 +20,8 @@ public interface ReportService {
     Report getbyid(Long id);
 
     List<Report> reportList();
-    List<Report> reportListByLaboratoryWorkerId(Long laboratoryWorkerId);
+    List<ReportResDTO> getReportListByLaboratoryWorkerId(Long laboratoryWorkerId);
 
 
+    List<ReportResDTO> getReportListByPatientId(Long patientId);
 }
