@@ -5,6 +5,7 @@ import com.example.demo.dto.*;
 import com.example.demo.entity.LaboratoryWorker;
 import com.example.demo.entity.Patient;
 import com.example.demo.entity.Report;
+import com.example.demo.services.LaboratoryWorkerService;
 import com.example.demo.services.PatientService;
 import com.example.demo.services.ReportService;
 import org.springframework.stereotype.Service;
@@ -16,8 +17,8 @@ import java.util.stream.Collectors;
 @Service
 public class ReportServiceImpl implements ReportService {
     private final ReportRepository reportRepository;
-    private final PatientService patientService;
-    private final LaboratoryWorkerService laboratoryWorkerService;
+    private static  PatientService patientService;
+    private static  LaboratoryWorkerService laboratoryWorkerService;
 
     public ReportServiceImpl(ReportRepository reportRepository, PatientService patientService,
                              LaboratoryWorkerService laboratoryWorkerService) {
@@ -96,7 +97,7 @@ public class ReportServiceImpl implements ReportService {
         Report report = new Report();
         report.setDiagnosisDetails(reportReqDTO.getDiagnosisDetails());
         report.setDiagnosisTitle(reportReqDTO.getDiagnosisTitle());
-        Patient patient=patientService.getPatientByid(reportReqDTO.getPatientId());
+        Patient patient= patientService.getPatientByid(reportReqDTO.getPatientId());
         report.setPatient(patient);
         LaboratoryWorker laboratoryWorker=laboratoryWorkerService.getLaboratoryWorkerByid(reportReqDTO.getLaboratoryWorkerId());
         report.setLaboratoryWorker(laboratoryWorker);

@@ -5,9 +5,10 @@ import com.example.demo.dto.LaboratoryWorkerResDTO;
 import com.example.demo.dto.PatientReqDTO;
 import com.example.demo.dto.PatientResDTO;
 import com.example.demo.entity.LaboratoryWorker;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public interface LaboratoryWorkerService {
 
     LaboratoryWorkerResDTO saveLaboratoryWorker(LaboratoryWorkerReqDTO laboratoryWorkerReqDTO);
