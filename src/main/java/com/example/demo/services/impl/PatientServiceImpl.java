@@ -101,6 +101,9 @@ public class PatientServiceImpl implements PatientService {
         patient.setPassword(patientReqDTO.getPassword());
         patient.setPatientNumber(patient.getPatientNumber());
         patient.setMail(patientReqDTO.getMail());
+        patient.setPassword(patientReqDTO.getPassword());
+        patient.setPatientNumber(patient.getPatientNumber());
+
         return patient;
     }
 
