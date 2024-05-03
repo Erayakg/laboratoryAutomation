@@ -4,10 +4,11 @@ import com.example.demo.dao.PatientRepository;
 import com.example.demo.dto.PatientReqDTO;
 import com.example.demo.dto.PatientResDTO;
 import com.example.demo.entity.Patient;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public interface PatientService {
 
     PatientResDTO savePatient(PatientReqDTO patientReqDTO);
