@@ -14,15 +14,12 @@ public class BaseAdditionalsFields {
     private Long id;
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
-    private Long createdBy;
-    private Long updatedBy;
+
 
     @PrePersist
     private void prePersist() {
         this.createDate= LocalDateTime.now();
     }
-
-
     @PreUpdate
     private void preUpdate() {
         this.updateDate = LocalDateTime.now();

@@ -13,16 +13,18 @@ public class Report extends BaseEntity{
     @Id
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "laborant_id")
-    private Laborant laborant;
+    @JoinColumn(name = "worker_id")
+    private LaboratoryWorker laboratoryWorker;
 
     @ManyToOne
-    @JoinColumn(name = "hasta_id")
+    @JoinColumn(name = "patient_id")
     private Patient patient;
 
-    private String tanıBasligi;
-    private String tanıDetayları;
-    private LocalDate verilmeTarihi;
+    private String mail;
+    private  String password;
+    private String diagnosisTitle;
+    private String diagnosisDetails;
+    private LocalDate issueDate;
 
-    private String fotoUrl;
+    private String photoUrl;
 }

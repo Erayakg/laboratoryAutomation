@@ -1,9 +1,6 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -12,10 +9,13 @@ public class Patient extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "patient_id")
     private Long id;
-    private String ad;
-    private String soyad;
-    private String kimlikNumarasi;
+    private String mail;
+    private  String password;
+    private String name;
+    private String surName;
+    private String patientNumber;
 
 
 
